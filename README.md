@@ -1,93 +1,121 @@
-# Nassau Candy Distributor Data Analytics
+# 🍫 Nassau Candy Distributor — Data Analytics Project
 
-Hi! This is my data analytics project based on the Nassau Candy Distributor dataset. I used Python to explore the data and compare sales and gross profit across products, factories, and destinations.
+## 📌 About the Project
 
-## What I wanted to learn
+This project focuses on analyzing sales and shipping data from Nassau Candy Distributor. I worked on this project to practice Python-based data analysis and understand how data can be used to identify business trends and improve decision-making.
 
-The main goal was to turn the raw CSV data into summaries that are easier to understand. I looked at:
+The analysis covers factory performance, product sales, gross profit, profit margins, and customer destinations. I also created an interactive dashboard to make the results easier to understand.
 
-- Total sales, units sold, gross profit, and gross margin
-- Sales and profit by factory
-- Product performance
-- Factory-to-city/state summaries
-- Basic data quality checks
+## 🌐 Live Dashboard
 
-## Tools I used
+**[View My Project Dashboard](https://nc-distributers-insights.streamlit.app/)**
 
-- **Python** for analysis
-- **pandas** for reading and summarizing the CSV
-- **Matplotlib** for charts
-- **openpyxl / Excel** for the formatted workbook
-- **Streamlit** for the web dashboard
-- **VS Code** for writing and running the code
+The dashboard presents key performance indicators, charts, product performance, destination summaries, and a preview of the dataset.
 
-## Main results
+## 🎯 Project Objectives
 
-The dataset I analyzed has **10,194 rows** and **18 columns**.
+- Analyze overall sales, units sold, and gross profit.
+- Compare the performance of different factories.
+- Identify products with high sales and gross profit.
+- Explore customer destinations and factory-to-customer routes.
+- Examine shipping date data and identify potential data-quality issues.
+- Present the findings through an interactive dashboard.
+
+## 🛠️ Tools & Technologies
+
+- **Python** — data analysis and calculations
+- **Pandas** — data cleaning and data manipulation
+- **Matplotlib** — data visualization
+- **Streamlit** — interactive dashboard
+- **GitHub** — source code and project version control
+
+## 📊 Key Results
 
 | Metric | Result |
 |---|---:|
-| Total units | 38,654 |
+| Total records analyzed | 10,194 |
+| Unique products | 15 |
+| Total units sold | 38,654 |
 | Total sales | $141,783.63 |
 | Total gross profit | $93,442.80 |
 | Overall gross margin | 65.91% |
 
-In my factory comparison, **Lot's O' Nuts** had the highest recorded sales and gross profit. **The Other Factory** had the lowest recorded gross margin, so its product mix, pricing, and cost data could be checked in more detail.
+### Factory Performance
 
-These are descriptive findings from this dataset. They do not explain the reasons behind a factory's performance by themselves.
+- **Lot's O' Nuts** recorded the highest sales and gross profit among the analyzed factories.
+- **Wicked Choccy's** was the second-largest factory by sales.
+- The Other Factory had the lowest gross profit margin, indicating an area that may need further investigation.
 
-## Data quality note
+### Product Analysis
 
-I checked the dataset for missing values and exact duplicate rows. The checks reported no missing values and no exact duplicate rows.
+The analysis compares products by sales and gross profit to identify the strongest contributors to overall performance.
 
-I also looked at the Order Date and Ship Date fields. The calculated differences were much larger than normal shipping times (median around 1,274 days), so I have not treated them as confirmed delivery delays. The date format and meaning of these fields should be verified before using them for shipping-performance conclusions.
+### Shipping & Route Analysis
 
-## Run the dashboard on your computer
+The project summarizes factory-to-customer destinations and examines order and shipping dates. The date calculations require validation before they can be interpreted as actual delivery lead times.
 
-### 1. Get the project files
+## 📈 Dashboard Features
 
-Download or clone this repository and open the project folder in VS Code.
+- Overall business performance KPIs
+- Factory sales and gross profit comparisons
+- Profit margin analysis
+- Product performance charts
+- Customer destination summaries
+- Dataset preview
 
-The dashboard expects a file named `Nassau Candy Distributor.csv` in the same folder as `app.py`.
+## 💻 How to Run the Project Locally
 
-**Please only use or share the dataset if you have permission to do so.** If the data is not allowed to be public, keep it out of a public repository and use an approved private data source or a sanitized sample.
-
-### 2. Install the packages
-
-Open the VS Code terminal in the project folder and run:
+### 1. Clone the repository
 
 ```bash
-python -m venv .venv
-.venv\Scripts\activate
+git clone https://github.com/adarshchaudhary898/nassau-candy-data-analytics.git
+cd nassau-candy-data-analytics
+```
+
+### 2. Install the required libraries
+
+```bash
 pip install -r requirements.txt
 ```
 
-### 3. Start Streamlit
+### 3. Add the dataset
+
+Place `Nassau Candy Distributor.csv` in the project folder, alongside `app.py`.
+
+### 4. Run the dashboard
 
 ```bash
 streamlit run app.py
 ```
 
-Streamlit should provide a local URL to open the dashboard in your browser.
+The dashboard should open in your browser.
 
-## Project files
+## ⚠️ Data Quality Note
 
-- `app.py` — Streamlit dashboard
-- `requirements.txt` — Python packages needed by the dashboard
-- `README.md` — project notes and setup instructions
+The date analysis produced unusually large intervals between order and shipping dates. Although the dates could be parsed, their meaning and format need to be confirmed before drawing conclusions about actual shipping delays. Therefore, these values should not be treated as verified delivery performance.
 
-Other analysis outputs, charts, and reports may be stored separately depending on which project files are included in the repository.
+Route distances were not calculated because validated geographic coordinates were not available.
 
-## What I learned
+## 📚 What I Learned
 
-This project helped me practise loading CSV data, checking data quality, grouping records, calculating business metrics, making charts, and presenting results in a dashboard. I also learned that it is important to mention data limitations instead of assuming every calculated value is meaningful.
+Through this project, I practiced working with a real-world-style dataset, using Pandas for analysis, creating charts, comparing business performance, building an interactive Streamlit dashboard, and publishing a project using GitHub and Streamlit Community Cloud.
 
-## Next steps
+## 🚀 Future Improvements
 
-- Confirm the correct interpretation of the date fields
-- Review the low recorded margin for The Other Factory in more detail
-- Add more filters or trends after validating the relevant data
-- Keep the dashboard and project documentation updated as the analysis improves
+- Validate order and shipping dates with the original data source.
+- Add geographic coordinates to calculate route distances.
+- Explore regional and shipping-mode performance in more detail.
+- Add interactive filters for factories, products, and destinations.
+- Improve the dashboard with additional business insights.
+
+## 👤 Author
+
+**Adarsh Verma**
+
+MCA Student | Aspiring Data Analyst
+
+[GitHub Profile](https://github.com/adarshchaudhary898)
 
 ---
-This is a learning and descriptive analytics project. The results depend on the supplied dataset and the product-to-factory mapping used in the analysis.
+
+*This project was developed as a learning exercise in data analytics and dashboard development.*
