@@ -1,54 +1,93 @@
 # Nassau Candy Distributor Data Analytics
 
-A beginner-friendly Streamlit dashboard for exploring sales, units, gross profit, factory performance, and product performance in the Nassau Candy Distributor dataset.
+Hi! This is my data analytics project based on the Nassau Candy Distributor dataset. I used Python to explore the data and compare sales and gross profit across products, factories, and destinations.
 
-## Features
-- KPI cards for sales, gross profit, units, and gross margin
-- Factory sales and gross-profit charts
-- Factory and product summary tables
-- Optional Region and Division filters
-- Destination summary, where destination columns are available
-- CSV download of the factory summary
+## What I wanted to learn
 
-## Files needed
-Place these files in the same folder:
-- `app.py`
-- `requirements.txt`
-- `Nassau Candy Distributor.csv`
+The main goal was to turn the raw CSV data into summaries that are easier to understand. I looked at:
 
-**Dataset note:** The app expects the CSV columns used in the internship analysis, including `Product Name`, `Sales`, `Units`, `Gross Profit`, and `Cost`. Keep the original source CSV unchanged. Only upload the dataset to a public repository if you have permission and it contains no confidential information. Otherwise, use a private repository or a sanitized/anonymized dataset.
+- Total sales, units sold, gross profit, and gross margin
+- Sales and profit by factory
+- Product performance
+- Factory-to-city/state summaries
+- Basic data quality checks
 
-## Run locally in VS Code
-1. Install Python 3.10 or newer.
-2. Open this folder in VS Code.
-3. In the terminal, run:
+## Tools I used
 
-   ```bash
-   python -m venv .venv
-   .venv\Scripts\activate
-   pip install -r requirements.txt
-   streamlit run app.py
-   ```
+- **Python** for analysis
+- **pandas** for reading and summarizing the CSV
+- **Matplotlib** for charts
+- **openpyxl / Excel** for the formatted workbook
+- **Streamlit** for the web dashboard
+- **VS Code** for writing and running the code
 
-4. Streamlit will show a local address, usually `http://localhost:8501`.
+## Main results
 
-## Deploy on Streamlit Community Cloud
-1. Push this project to GitHub.
-2. Open https://share.streamlit.io/ and sign in with GitHub.
-3. Choose **Create app**, select this repository and branch, and set the main file to `app.py`.
-4. Deploy and test the live URL.
+The dataset I analyzed has **10,194 rows** and **18 columns**.
 
-Do not submit a deployment URL until the app loads successfully.
+| Metric | Result |
+|---|---:|
+| Total units | 38,654 |
+| Total sales | $141,783.63 |
+| Total gross profit | $93,442.80 |
+| Overall gross margin | 65.91% |
 
-## Project findings from the completed analysis
-- 10,194 records and 18 columns
-- Total sales: $141,783.63
-- Total gross profit: $93,442.80
-- Gross margin: 65.91%
-- Total units: 38,654
-- Lot's O' Nuts led factory sales and gross profit in the analyzed dataset.
-- The Other Factory had the lowest observed gross margin.
-- Order-to-ship date differences looked implausibly large; validate date parsing and meaning before presenting shipping duration as a real-world finding.
+In my factory comparison, **Lot's O' Nuts** had the highest recorded sales and gross profit. **The Other Factory** had the lowest recorded gross margin, so its product mix, pricing, and cost data could be checked in more detail.
 
-## Research and publication status
-This README and the accompanying paper draft are project documentation, not evidence of peer review, approval, or publication. Do not label the paper as approved or published unless you receive confirmation.
+These are descriptive findings from this dataset. They do not explain the reasons behind a factory's performance by themselves.
+
+## Data quality note
+
+I checked the dataset for missing values and exact duplicate rows. The checks reported no missing values and no exact duplicate rows.
+
+I also looked at the Order Date and Ship Date fields. The calculated differences were much larger than normal shipping times (median around 1,274 days), so I have not treated them as confirmed delivery delays. The date format and meaning of these fields should be verified before using them for shipping-performance conclusions.
+
+## Run the dashboard on your computer
+
+### 1. Get the project files
+
+Download or clone this repository and open the project folder in VS Code.
+
+The dashboard expects a file named `Nassau Candy Distributor.csv` in the same folder as `app.py`.
+
+**Please only use or share the dataset if you have permission to do so.** If the data is not allowed to be public, keep it out of a public repository and use an approved private data source or a sanitized sample.
+
+### 2. Install the packages
+
+Open the VS Code terminal in the project folder and run:
+
+```bash
+python -m venv .venv
+.venv\Scripts\activate
+pip install -r requirements.txt
+```
+
+### 3. Start Streamlit
+
+```bash
+streamlit run app.py
+```
+
+Streamlit should provide a local URL to open the dashboard in your browser.
+
+## Project files
+
+- `app.py` — Streamlit dashboard
+- `requirements.txt` — Python packages needed by the dashboard
+- `README.md` — project notes and setup instructions
+
+Other analysis outputs, charts, and reports may be stored separately depending on which project files are included in the repository.
+
+## What I learned
+
+This project helped me practise loading CSV data, checking data quality, grouping records, calculating business metrics, making charts, and presenting results in a dashboard. I also learned that it is important to mention data limitations instead of assuming every calculated value is meaningful.
+
+## Next steps
+
+- Confirm the correct interpretation of the date fields
+- Review the low recorded margin for The Other Factory in more detail
+- Add more filters or trends after validating the relevant data
+- Keep the dashboard and project documentation updated as the analysis improves
+
+---
+This is a learning and descriptive analytics project. The results depend on the supplied dataset and the product-to-factory mapping used in the analysis.
