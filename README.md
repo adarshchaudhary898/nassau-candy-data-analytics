@@ -1,65 +1,142 @@
 # NC Distributors Insights — Factory-to-Customer Route Analysis
 
-Live dashboard: https://nc-distributers-insights.streamlit.app/
+**Developed by Adarsh Verma**  
+MCA Student | Data Analytics Project
 
-## What this project includes
-- Factory and product sales/profit overview
-- Factory → customer state/region route aggregation
+<p align="center">
+  <a href="https://nc-distributers-insights.streamlit.app/">
+    <img src="https://img.shields.io/badge/Live-Dashboard-brightgreen?style=for-the-badge&logo=streamlit" alt="Live Dashboard">
+  </a>
+  <a href="https://github.com/adarshchaudhary898/nassau-candy-data-analytics">
+    <img src="https://img.shields.io/badge/GitHub-Repository-black?style=for-the-badge&logo=github" alt="GitHub Repository">
+  </a>
+</p>
+
+## Live Demo
+
+**Explore the interactive dashboard:**  
+https://nc-distributers-insights.streamlit.app/
+
+**Source Code:**  
+https://github.com/adarshchaudhary898/nassau-candy-data-analytics
+
+## About the Project
+
+NC Distributors Insights is a Python-based data analytics project that examines factory-to-customer shipping routes using the Nassau Candy Distributor dataset. It explores sales, profitability, order-to-ship intervals, shipping modes and geographic patterns through an interactive Streamlit dashboard.
+
+The project aims to make route-related data easier to explore and help identify patterns that may warrant further investigation.
+
+## Key Features
+
+- Factory-wise sales, gross profit and profit-margin analysis
+- Factory-to-customer state and region route summaries
 - Fastest and slowest observed order-to-ship intervals
-- Relative route efficiency score and delay-threshold flags
-- State-level US map using approximate state centroids
-- Ship-mode comparisons
+- Relative route-efficiency scoring and threshold flags
+- US state-level map using approximate state centroids
+- Shipping-mode comparisons
 - Order-level route drill-down
-- Interactive date, region, state, ship-mode, factory and threshold filters
-- Data-quality checks and CSV downloads
-- Research paper draft
+- Interactive filters for dates, regions, states, shipping modes, factories and thresholds
+- Data-quality checks and downloadable CSV summaries
 
-## Files
-- `app.py` — Streamlit application
-- `requirements.txt` — Python dependencies
-- `research_paper_draft.md` — draft research paper
-- `Nassau Candy Distributor.csv` — source dataset, supplied separately by the project owner
+## Technology Stack
 
-## Protect the original CSV
-The app reads `Nassau Candy Distributor.csv` from the same folder as `app.py`. It does not write to or overwrite the source file. Derived date columns are created in memory only. Keep a backup before making changes.
+- **Python** — data processing and application logic
+- **Pandas** — data cleaning and analysis
+- **Streamlit** — interactive dashboard
+- **Plotly** — interactive visualizations
+- **GitHub** — source-code version control
+- **Streamlit Community Cloud** — deployment
 
-The starter ZIP intentionally does not contain the source dataset. Place your existing CSV beside `app.py`. For public GitHub deployment, upload the data only if you have permission and it contains no confidential information. Otherwise use a private repository or a permitted sanitized dataset.
+## Repository Structure
 
-## Run locally (Windows / VS Code)
-1. Extract this ZIP into a new folder, leaving your existing project untouched.
-2. Copy your original `Nassau Candy Distributor.csv` into the extracted folder.
-3. Open the extracted folder in VS Code.
-4. Open Terminal and run:
+```text
+nassau-candy-data-analytics/
+├── app.py
+├── requirements.txt
+├── README.md
+├── .gitignore
+├── .devcontainer/
+└── Nassau Candy Distributor.csv
+```
+
+The dataset should only be included in the repository if you have permission to share it publicly. The application and documentation may also be used with a permitted local copy of the dataset.
+
+## Run the Project Locally
+
+### Prerequisites
+
+- Python installed on your computer
+- Visual Studio Code or another Python editor
+- A permitted copy of `Nassau Candy Distributor.csv`
+
+### Installation
+
+1. Clone or download this repository.
+2. Open the project folder in VS Code.
+3. Open the terminal and create a virtual environment:
 
    ```powershell
    py -m venv .venv
-   .venv\Scripts\Activate.ps1
-   python -m pip install --upgrade pip
-   pip install -r requirements.txt
-   streamlit run app.py
    ```
 
-   If PowerShell blocks activation, use Command Prompt and run `.venv\Scripts\activate.bat`, then continue.
+4. Activate the environment in PowerShell:
 
-5. Open the local URL Streamlit prints (usually `http://localhost:8501`).
+   ```powershell
+   .\.venv\Scripts\Activate.ps1
+   ```
 
-## Deploy on Streamlit Community Cloud
-1. Commit `app.py`, `requirements.txt`, and documentation to the intended GitHub repository.
-2. Ensure the CSV is available to the deployed app through a permitted, secure approach. Do not publish confidential data.
-3. In Streamlit Community Cloud, select the repository and branch, set the main file path to `app.py`, then deploy.
-4. Check the app logs if dependency installation or file loading fails.
-5. Verify filters, route summaries, map and downloads in the deployed app.
+5. Install dependencies:
 
-## Important data interpretation limitation
-The supplied project analysis found an average order-to-ship date difference of about 1,320.84 days and median of about 1,274 days. Those values are implausibly large for normal shipping. The dashboard labels the measure **order-to-ship interval**, not confirmed transit or delivery time, and flags unusually long intervals for investigation. Confirm source date format and business definitions before presenting these values as actual shipping delays.
+   ```powershell
+   python -m pip install -r requirements.txt
+   ```
 
-The data does not contain a confirmed delivery date or a separate shipping-charge field. Therefore this dashboard cannot prove actual delivery lateness, route distance to customer addresses, or shipping-cost savings. The state map uses approximate state centroids, not customer coordinates.
+6. Place the CSV beside `app.py` if it is not already available there.
+7. Start the dashboard:
 
-## Suggested verification checklist
-- [ ] CSV loads and expected columns are present
-- [ ] Total rows and sales reconcile with the source analysis
-- [ ] Date parsing has been checked against original source rows
-- [ ] Filters change all displayed metrics consistently
-- [ ] State names/abbreviations map as expected
-- [ ] CSV downloads open correctly
-- [ ] Local and deployed apps both load without errors
+   ```powershell
+   python -m streamlit run app.py
+   ```
+
+8. Open the local URL shown in the terminal, usually `http://localhost:8501`.
+
+## Data Protection
+
+The application reads `Nassau Candy Distributor.csv` and performs its analysis in memory. It is designed not to overwrite the original source CSV.
+
+Keep a backup of the original dataset. Do not publish confidential or restricted data; use a private repository or an authorised, sanitised dataset when required.
+
+## Important Analytical Limitations
+
+The source analysis produced an average order-to-ship interval of approximately **1,320.84 days** and a median of approximately **1,274 days**. These values are unusually large for normal shipping and require validation of the source dates and business definitions.
+
+- The interval represents the difference between order date and ship date, not confirmed delivery time.
+- The dataset does not include a confirmed delivery date or a separate shipping-charge field.
+- The dashboard cannot independently establish actual delivery delays or shipping-cost savings.
+- The state map uses approximate state centroids rather than exact customer coordinates.
+- Relative route-efficiency scores are analytical indicators, not verified operational performance measurements.
+
+Interpret these findings cautiously and validate the underlying data before drawing business conclusions.
+
+## Verification Checklist
+
+- [ ] CSV loads with the expected columns.
+- [ ] Sales and row totals reconcile with the source data.
+- [ ] Date parsing has been validated against original records.
+- [ ] Filters update the displayed metrics consistently.
+- [ ] State names and abbreviations map correctly.
+- [ ] CSV downloads open correctly.
+- [ ] The local and deployed dashboards run without errors.
+
+## Author
+
+**Adarsh Verma**  
+MCA Student | Aspiring Data Analyst
+
+- **GitHub:** https://github.com/adarshchaudhary898
+- **Project Repository:** https://github.com/adarshchaudhary898/nassau-candy-data-analytics
+- **Live Dashboard:** https://nc-distributers-insights.streamlit.app/
+
+---
+
+*This project was developed for learning and demonstrating data analytics, interactive visualization and exploratory shipping-route analysis.*
